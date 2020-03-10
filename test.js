@@ -1,4 +1,4 @@
-function trackingInteractedElement(elementKeys, elementSelectors, description) {
+async function trackingInteractedElement(elementKeys, elementSelectors, description) {
     let data = {
         domain: window.location.hostname,
         url: window.location.href,
@@ -45,14 +45,3 @@ function createCORSRequest(method, url) {
     }
     return xhr;
 }
-
-
-function clickHandler(e) {
-    trackingInteractedElement(
-      ["test_key1", "test_key2"],
-      ["test_selector1", "test_selector2"],
-      "Test Description");
-}
-
-window.captureEvents(Event.CLICK);
-window.onclick = clickHandler;
