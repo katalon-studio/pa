@@ -1,4 +1,4 @@
-async function trackingInteractedElement(elementKeys, elementSelectors, description) {
+function trackingInteractedElement(elementKeys, elementSelectors, description) {
     let data = {
         domain: window.location.hostname,
         url: window.location.href,
