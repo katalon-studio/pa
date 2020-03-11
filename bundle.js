@@ -32,29 +32,30 @@ recorder.attach();
 const LocatorBuilder = require("./locatorBuilders").LocatorBuilders;
 
 class ElementUtil {
-  
   static getElementByXpath(path) {
-    return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    return document.evaluate(
+      path,
+      document,
+      null,
+      XPathResult.FIRST_ORDERED_NODE_TYPE,
+      null
+    ).singleNodeValue;
   }
 
   static generateKeyFor(element) {
-    var indexObtained = false;
     for (
       var segs = [];
       element && element.nodeType == 1;
       element = element.parentNode
     ) {
-      if (!indexObtained) {
-        for (
-          var i = 1, sib = element.previousSibling;
-          sib;
-          sib = sib.previousSibling
-        ) {
-          if (sib.nodeName == element.nodeName) i++;
-        }
-        segs.unshift(element.nodeName.toLowerCase() + "[" + i + "]");
-        indexObtained = true;
-      } else segs.unshift(element.nodeName.toLowerCase());
+      for (
+        var i = 1, sib = element.previousSibling;
+        sib;
+        sib = sib.previousSibling
+      ) {
+        if (sib.nodeName == element.nodeName) i++;
+      }
+      segs.unshift(element.nodeName.toLowerCase() + "[" + i + "]");
     }
     return segs.length ? "/" + segs.join("/") : null;
   }
