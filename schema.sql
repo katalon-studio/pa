@@ -3,5 +3,6 @@ CREATE TABLE element (
     description text,
     domain text,
     url text,
-    selector text
+    selector text,
+    created_at timestamp without time zone
 );
