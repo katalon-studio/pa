@@ -13537,7 +13537,6 @@ class Recorder {
     if (this.window.location !== this.window.parent.location) {s
       this.window.parent.postMessage(JSON.stringify(object), "*");
     } else {
-      console.log(object);
       const data = {
         keys: [object["unique_identifier"]],
         selectors: this.getOnlySelectors(object)
