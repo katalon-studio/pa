@@ -13,14 +13,14 @@ async function createElement(e) {
     let i;
     let j;
 
-    const now = new Date().getTime();
+    const now = new Date();
     for (i = 0; i < e.keys.length; i++) {
         const key = e.keys[i];
         for (j = 0; j < e.selectors.length; j++) {
         const selector = e.selectors[j];
         await pgClient.query(
-            'INSERT INTO element(key, description, selector, domain, url, created_at) VALUES($1, $2, $3, $4, $5, $6)',
-            [key, e.description, selector, e.domain, e.url, now],
+            'INSERT INTO element(key, description, selector, domain, url, timestamp, date, hour, minute, second) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+            [key, e.description, selector, e.domain, e.url, now, now, now.getHours(), now.getMinutes(), now.getSeconds()],
         );
         }
     }

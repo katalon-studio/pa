@@ -4,5 +4,9 @@ CREATE TABLE element (
     domain text,
     url text,
     selector text,
-    created_at timestamp without time zone
+    timestamp timestamp without time zone,
+    date date,
+    hour varchar,
+    minute varchar,
+    second varchar
 );

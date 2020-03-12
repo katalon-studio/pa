@@ -16,6 +16,7 @@ app.post('/', (req, res) => {
   return service.createElement(req.body)
     .then(() => res.send('OK'))
     .catch((e) => {
+      console.log(e);
       res.status(500);
       res.send(e);
     });
