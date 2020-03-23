@@ -1393,7 +1393,6 @@ class Recorder {
         keys: [object["unique_identifier"]],
         selectors: this.getOnlySelectors(object)
       };
-      console.log(object);
       trackingInteractedElement(
         data.keys,
         data.selectors,
@@ -1419,21 +1418,20 @@ class Recorder {
     if (detectChrome()) {
       chromePostData(url, data, function(response) {
         if (response) {
-          console.log(response);
           alert(response);
           setTimeout(function() {
             window.focus();
           }, 1);
           return;
         }
-        console.log("POST success");
+        // console.log("POST success");
       });
       return;
     }
     if (detectIE() && this.window.httpRequestExtension) {
       var response = this.window.httpRequestExtension.postRequest(data, url);
       if (response === "200") {
-        console.log("POST success");
+        // console.log("POST success");
       } else {
         console.log(response);
       }
